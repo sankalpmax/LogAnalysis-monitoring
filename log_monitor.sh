@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOG_FILE=$1
+LOG_FILE=$1                                                # Function to handle Ctrl+C
 LOG_MONITOR_LOG="log_monitor.log"
 
 
@@ -10,14 +10,14 @@ cleanup() {
 }
 
 
-analyze_log() {
+analyze_log() {                                             # Function to analyze log file
     echo "Performing log analysis..."
-    # Basic analysis - count occurrences of specific keywords
-    error_count=$(grep -ic "error" "$LOG_FILE")
+    
+    error_count=$(grep -ic "error" "$LOG_FILE")              # Basic analysis - count occurrences of specific keywords
     warning_count=$(grep -ic "warning" "$LOG_FILE")
     http_count=$(grep -ic "HTTP" "$LOG_FILE")
 
-    # Generate summary report
+                                                             # Generate summary report
     echo "Summary Report:"
     echo "Errors: $error_count occurrences"
     echo "Warnings: $warning_count occurrences"
@@ -25,7 +25,7 @@ analyze_log() {
 }
 
 
-monitor_log() {
+monitor_log() {                                              # Main function for monitoring log file
     echo "Monitoring log file: $LOG_FILE"
     tail -n +1 -f "$LOG_FILE" | while IFS= read -r line; do
         if [ -n "$line" ]; then
@@ -34,19 +34,17 @@ monitor_log() {
     done
 }
 
-trap cleanup SIGINT
+trap cleanup SIGINT                                          # Trap Ctrl+C
 
 
-if [ -n "$line" ]; then
+if [ -n "$line" ]; then                                      # Check if log file is provided as command line argument
     echo "Usage: $0 <log_file>"
     exit 1
 fi
 
-monitor_log &
+monitor_log &                                                 # Start monitoring the log file
 
+wait                                                          # Wait for user to stop monitoring
 
-wait
-
-
-analyze_log
+analyze_log                                                   # Analyze the log file
 
