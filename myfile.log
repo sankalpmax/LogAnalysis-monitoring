@@ -1,0 +1,8 @@
+2024-04-22 10:00:00 - INFO - Application started
+2024-04-22 10:05:32 - ERROR - Unable to connect to database
+2024-04-22 10:10:15 - WARNING - Resource usage high
+2024-04-22 10:15:42 - INFO - User logged in
+2024-04-22 10:20:08 - ERROR - Internal server error
+2024-04-22 10:25:19 - INFO - Request received: /api/data
+2024-04-22 10:30:55 - INFO - Application stopped
+
