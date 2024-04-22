@@ -1,6 +1,6 @@
 <h1>Log Analysis and Monitoring Script<h1>
 
-<h1>Overview/h1>
+<h1>Overview</h1>
 
 This project is aimed at automating the analysis and monitoring of log files using a Bash shell script. 
 The script continuously monitors a specified log file for new entries, performs basic log analysis, and generates summary reports.
